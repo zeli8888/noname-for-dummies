@@ -114,6 +114,16 @@
 
 -----
 
+### 联机
+1. 局域网联机：电脑端开启，然后查看电脑端wifi的ip地址，无视电脑端界面显示的虚拟ip地址，手机端直接连接电脑端wifi的ip地址即可，不要勾选WSS
+2. server联机：
+	https://www.bilibili.com/video/BV1CbzJYAEfN/?spm_id_from=333.788.top_right_bar_window_history.content.click&vd_source=c69b4c0fea45fd99b6a213b92d3d3117
+	cd noname/resources/app/game && screen -S noname && node server.js    离开窗口（挂起）： 按 Ctrl + A 然后按 D。此时你可以断开 SSH，程序依然在跑。回来查看： screen -r noname。退出： 在窗口内按 Ctrl + C 停止，然后输入 exit 销毁窗口。
+	电脑/手机端连接服务器ip:8080。如果端口已占用，可以修改server.js文件的端口
+3. 局域网+radmin联机：手机端连radmin分配的电脑端ip
+
+-----
+
 ### 合作交流与注意事项
 
 #### 合作交流
