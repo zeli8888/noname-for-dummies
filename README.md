@@ -112,6 +112,9 @@
 
 - 客户端免安装，直接解压后双击打开无名杀.exe，在新手向导界面点击“开始游戏”即可
 
+Mac网页端
+- cd noname/resources/app/ && python3 -m http.server 8080    浏览器访问http://localhost:8080即可
+
 -----
 
 ### 联机
