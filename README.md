@@ -123,7 +123,31 @@ Mac网页端
 	https://www.bilibili.com/video/BV1CbzJYAEfN/?spm_id_from=333.788.top_right_bar_window_history.content.click&vd_source=c69b4c0fea45fd99b6a213b92d3d3117
 	cd noname/resources/app/game && screen -S noname && node server.js    离开窗口（挂起）： 按 Ctrl + A 然后按 D。此时你可以断开 SSH，程序依然在跑。回来查看： screen -r noname。退出： 在窗口内按 Ctrl + C 停止，然后输入 exit 销毁窗口。
 	电脑/手机端连接服务器ip:8080。如果端口已占用，可以修改server.js文件的端口
-3. 局域网+radmin联机：手机端连radmin分配的电脑端ip
+
+	nginx config
+	```
+	# 无名杀 WebSocket 转发
+	location /noname {
+		proxy_pass http://127.0.0.1:1314/; # 对应刚才改的端口
+		
+		# 必须有的 WebSocket 支持配置
+		proxy_http_version 1.1;
+		proxy_set_header Upgrade $http_upgrade;
+		proxy_set_header Connection "upgrade";
+
+		# 传递真实信息
+		proxy_set_header Host $host;
+		proxy_set_header X-Real-IP $remote_addr;
+		proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+		proxy_set_header X-Forwarded-Proto $scheme;
+
+		# 解决频繁断开连接的问题
+		proxy_read_timeout 600s;
+		proxy_send_timeout 600s;
+	}
+	```
+	
+4. 局域网+radmin联机：手机端连radmin分配的电脑端ip
 
 -----
 
